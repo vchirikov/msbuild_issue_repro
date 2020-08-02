@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="latest" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildFrameworkVersion>16.6.0</MSBuildFrameworkVersion>
+    <AspNetCoreVersion>3.1.4</AspNetCoreVersion>
+  </PropertyGroup>
+  <ItemGroup Label="Nupkg Versions">
+    <PackageReference Update="Microsoft.Build" Version="$(MSBuildFrameworkVersion)" />
+    <PackageReference Update="Microsoft.Build.Framework" Version="$(MSBuildFrameworkVersion)" />
+    <PackageReference Update="Microsoft.Build.Utilities.Core" Version="$(MSBuildFrameworkVersion)" />
+    <PackageReference Update="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Update="CliWrap" Version="3.0.2" />
+    <PackageReference Update="Nerdbank.GitVersioning" Version="3.2.31" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers" />
+
+    <PackageReference Update="System.CommandLine" Version="2.0.0-beta1.20303.1" />
+    <PackageReference Update="System.CommandLine.Hosting" Version="0.3.0-alpha.20303.1" />
+
+    <PackageReference Update="Serilog" Version="2.9.0"/>
+    <PackageReference Update="Serilog.Extensions.Logging" Version="3.0.1" />
+    <PackageReference Update="Serilog.Sinks.Console" Version="3.1.1" />
+
+    <PackageReference Update="Microsoft.Extensions.DependencyInjection" Version="$(AspNetCoreVersion)" />
+    <PackageReference Update="Microsoft.Extensions.Hosting" Version="$(AspNetCoreVersion)" />
+    <PackageReference Update="Microsoft.Extensions.Logging" Version="$(AspNetCoreVersion)" />
+  </ItemGroup>
+</Project>

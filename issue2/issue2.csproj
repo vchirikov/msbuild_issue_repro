@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <OutputType>exe</OutputType>
+    <AssemblyName>issue2.Tool</AssemblyName>
+    <RootNamespace>issue2.Tool</RootNamespace>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>issue2</ToolCommandName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\issue1\msbuild_issue_repro.csproj" />
+  </ItemGroup>
+
+</Project>
