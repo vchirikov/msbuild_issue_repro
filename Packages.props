@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="latest" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <MSBuildFrameworkVersion>16.6.0</MSBuildFrameworkVersion>
-    <AspNetCoreVersion>3.1.4</AspNetCoreVersion>
+    <MSBuildFrameworkVersion>16.7.0</MSBuildFrameworkVersion>
+    <AspNetCoreVersion>3.1.8</AspNetCoreVersion>
   </PropertyGroup>
   <ItemGroup Label="Nupkg Versions">
     <PackageReference Update="Microsoft.Build" Version="$(MSBuildFrameworkVersion)" />

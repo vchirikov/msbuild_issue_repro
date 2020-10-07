@@ -1,6 +1,4 @@
-﻿#define USE_WORKAROUND_SdkResolverService
-
-using System;
+﻿using System;
 using System.IO;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -60,34 +58,6 @@ namespace msbuild_issue_repro
                     .Single(x => x.StartsWith("Base Path:", StringComparison.Ordinal))
                     .Substring("Base Path:".Length).Trim();
 
-#if USE_WORKAROUND_SdkResolverService
-                // dotnet sdk 5.0 can't load CentralPackageVersions Sdk with exception:
-                // 'The SDK 'Microsoft.Build.CentralPackageVersions/2.0.52' specified could not be found
-                // because of their changes in SdkResolverService (at least preview.7 is affected)
-                // so we trying to find latest 3.1 sdk as a fallback
-                // https://github.com/microsoft/MSBuildSdks/issues/195
-                path = Path.TrimEndingDirectorySeparator(path);
-                if (Path.GetFileName(path)!.StartsWith("5"))
-                {
-                    var dirs = Directory.GetDirectories(Path.GetDirectoryName(path), "3.*", SearchOption.TopDirectoryOnly)
-                        .Select(x => Path.TrimEndingDirectorySeparator(x)).ToArray();
-
-                    var fallbackVersion = dirs.Select(x =>
-                    {
-                        var version = Path.GetFileName(x)!;
-                        var idx = version.IndexOf('-');
-                        if (idx >= 0)
-                        {
-                            version = version[0..idx];
-                        }
-                        return new System.Version(version);
-                    }).OrderByDescending(v => v).FirstOrDefault();
-                    if (fallbackVersion != null)
-                    {
-                        path = dirs.FirstOrDefault(x => Path.GetFileName(x).StartsWith(fallbackVersion.ToString(), StringComparison.Ordinal)) ?? path;
-                    }
-                }
-#endif
                 Environment.SetEnvironmentVariable("MSBUILD_EXE_PATH", Path.Combine(path, "MSBuild.dll"));
                 Environment.SetEnvironmentVariable("MSBuildExtensionsPath", path);
                 Environment.SetEnvironmentVariable("MSBuildSDKsPath", Path.Combine(path, "Sdks"));
